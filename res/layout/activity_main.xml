@@ -1,0 +1,156 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.aleaho.anjie.MainActivity" >
+
+    <!-- 贷款类别 -->
+
+    <TextView
+        android:id="@id/TxTDaikuanLeibie"
+        android:layout_width="80dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="14dp"
+        android:text="@string/daikuanleibie" />
+
+    <Spinner
+        android:id="@id/SpDaikuanLeibie"
+        android:layout_width="150dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="1dp" />
+
+    <!-- 计算方法 -->
+
+    <TextView
+        android:id="@id/TxTJiSuanFangFa"
+        android:layout_width="80dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="58dp"
+        android:text="@string/jisuanfangfa" />
+
+    <Spinner
+        android:id="@id/SpJiSuanFangFa"
+        android:layout_width="150dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="44dp" />
+
+    <!-- 贷款期限 -->
+
+    <TextView
+        android:id="@id/TxTDaiKuanQiXian"
+        android:layout_width="80dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="102dp"
+        android:text="@string/huankuannianxian" />
+
+    <Spinner
+        android:id="@id/SpDaiKuanQiXian"
+        android:layout_width="150dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="87dp"/>
+
+    <!-- 利率模式 -->
+
+    <TextView
+        android:id="@id/TxTLiLvMoShi"
+        android:layout_width="80dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="146dp"
+        android:text="@string/lilvmoshi" />
+
+    <Spinner
+        android:id="@id/SpLiLvMoShi"
+        android:layout_width="110dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="130dp" />
+    
+    
+    <EditText
+        android:id="@id/etNianLilv"
+        android:layout_width="65dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="205dp"
+        android:layout_marginTop="130dp"
+        android:text="@string/sydklilv"
+        android:textSize="12sp"
+        android:inputType="numberDecimal" />
+    
+    <TextView
+        android:id="@+id/baifenhao"
+        android:layout_width="25dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="273dp"
+        android:layout_marginTop="144dp"
+        android:text="@string/baifenhao"
+        android:textSize="18sp"
+        android:textScaleX="1.1"/>
+    
+    
+
+    <!-- 利率折扣 -->
+
+    <TextView
+        android:id="@id/TxTLiLvMoShi"
+        android:layout_width="80dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="190dp"
+        android:text="@string/lilvzhekou" />
+
+    <Spinner
+        android:id="@id/spLiLvZheKou"
+        android:layout_width="150dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="173dp" />
+
+    <!-- 贷款总额 -->
+
+    <TextView
+        android:id="@id/TxTDaiKuanZongE"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="230dp"
+        android:text="@string/daikuanzonge1" />
+
+    <EditText
+        android:id="@id/etDaiKuanZongE"
+        android:layout_width="120dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="216dp"
+        android:hint="@string/shuruedu"
+        android:textColorHint="#238745"
+        android:inputType="numberSigned" />
+
+    
+    <TextView
+        android:id="@+id/danwei"
+        android:layout_width="25dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="215dp"
+        android:layout_marginTop="230dp"
+        android:text="@string/danwei" />
+    
+    <Button
+        android:id="@id/btjisuan"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="265dp" 
+        android:text="@string/jisuan"/>
+ 
+</FrameLayout>

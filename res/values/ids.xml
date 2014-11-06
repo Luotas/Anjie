@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 贷款类别 -->
+    <item name="SpDaikuanLeibie" type="id">spDaiKuanLeiBie</item>
+    <item name="TxTDaikuanLeibie" type="id">txtDaiKuanLeiBie</item>
+
+    <!-- 计算方法 -->
+    <item name="SpJiSuanFangFa" type="id">spJiSuanFangFa</item>
+    <item name="TxTJiSuanFangFa" type="id">txtJiSuanFangFa</item>
+
+    <!-- 贷款期限 -->
+    <item name="SpDaiKuanQiXian" type="id">spDaiKuanQiXian</item>
+    <item name="TxTDaiKuanQiXian" type="id">txtDaiKuanQiXian</item>
+
+    <!-- 利率模式 -->
+    <item name="SpLiLvMoShi" type="id">spLiLvMoShi</item>
+    <item name="TxTLiLvMoShi" type="id">txtLiLvMoShi</item>
+    <item name="etNianLilv" type="id">etNaianLiLv</item>
+
+    <!-- 利率折扣 -->
+    <item name="spLiLvZheKou" type="id">spLiLvZheKou</item>
+    <item name="txtLiLvZheKou" type="id">txtLiLvZheKou</item>
+
+    <!-- 贷款总额 -->
+    <item name="etDaiKuanZongE" type="id">etDaiKuanZongE</item>
+    <item name="TxTDaiKuanZongE" type="id">txtDaiKuanZongE</item>
+    
+    <item name="btjisuan" type="id">btJiSuan</item>
+
+</resources>

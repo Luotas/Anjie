@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="daikuanjisuan">还款计算</string>
+    <string name="tiqianhuangkuan">提前还款</string>
+    <string name="app_name">房贷计算器</string>
+    <string name="daikuanleibie">贷款类别</string>
+    <string name="jisuanfangfa">计算方法</string>
+    <string name="huankuannianxian">还款期限</string>
+    <string name="lilvmoshi">利率模式</string>
+    <string name="lilvzhekou">利率折扣</string>
+    <string name="daikuanzonge1">贷款总额</string>
+    <string name="danwei">元</string>
+    <string name="daikuanzonge2">贷款总额：</string>
+    <string name="huankuanzonge">还款总额：</string>
+    <string name="zhifulixi">支付利息：</string>
+    <string name="daikuanqishu">贷款期数：</string>
+    <string name="yuejunhuankuan">月均还款：</string>
+    <string name="shuruedu">请输入额度</string>
+    <string name="sydklilv">6.55</string>
+    <string name="gjjlilv">4.50</string>
+    
+    <string name="baifenhao">%</string>
+    <string name="imQiShu">期数</string>
+    <string name="imYueHuanKuan">月还款</string>
+    <string name="imLiXi">利息</string>
+    <string name="imBenJin">本金</string>
+    <string name="imSuoQianBenJin">所欠本金</string>
+    <string name="jisuan">计算</string>
+
+    <string-array name="spdaikuanleibie">
+        <item>商业贷款</item>
+        <item>公积金贷款</item>
+    </string-array>
+    <string-array name="spjisuanfangfa">
+        <item>等额本息</item>
+        <item>等额本金</item>
+    </string-array>
+    <string-array name="sphuankuanqixian">
+        <item>1年</item>
+        <item>2年</item>
+        <item>3年</item>
+        <item>4年</item>
+        <item>5年</item>
+        <item>6年</item>
+        <item>7年</item>
+        <item>8年</item>
+        <item>9年</item>
+        <item>10年</item>
+        <item>11年</item>
+        <item>12年</item>
+        <item>13年</item>
+        <item>14年</item>
+        <item>15年</item>
+        <item>16年</item>
+        <item>17年</item>
+        <item>18年</item>
+        <item>19年</item>
+        <item>20年</item>
+        <item>21年</item>
+        <item>22年</item>
+        <item>23年</item>
+        <item>24年</item>
+        <item>25年</item>
+        <item>26年</item>
+        <item>27年</item>
+        <item>28年</item>
+        <item>29年</item>
+        <item>30年</item>
+    </string-array>
+    <string-array name="splilvmoshi">
+        <item>系统利率</item>
+        <item>自定义</item>
+    </string-array>
+    <string-array name="spshydlilvzhekou">
+        <item>7折利率</item>
+        <item>8折利率</item>
+        <item>85折利率</item>
+        <item>9折利率</item>
+        <item>基准利率(1.0)</item>
+        <item>第二套房(1.1)</item>
+        <item>其他上浮(1.05)</item>
+        <item>其他上浮(1.15)</item>
+        <item>其他上浮(1.2)</item>
+    </string-array>
+    <string-array name="spgjjlilvzhekou">
+        <item>基准利率(1.0)</item>
+        <item>第二套房(1.1)</item>
+    </string-array>
+
+</resources>
