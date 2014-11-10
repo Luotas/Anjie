@@ -6,13 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Log;
-import android.widget.Toast;
 
-import com.aleaho.anjie.MainActivity.DKLB;
+import android.util.Log;
+
 import com.aleaho.anjie.MainActivity.JSFF;
 
 public class AnJieUity {
@@ -118,8 +114,6 @@ public class AnJieUity {
 		List<Map<String, String>> huanKuanShuJu = new ArrayList<Map<String, String>>();
 
 		Map<String, String> shuJu = null;
-		// 已还本金
-		double sumMoney = 0;
 		// 剩余本金
 		double shengYuBenJi = 0;
 		// 当期还利息
@@ -214,7 +208,7 @@ public class AnJieUity {
 		shuJu.put("NeiRong", String.valueOf(getDaiKuanQiXian()));
 		huanKuanHuiZong.add(shuJu);
 
-		if (jiSuanFangFa == JSFF.DEBX) {
+		if (jiSuanFangFa == JSFF.等额本息) {
 			shuJu = new HashMap<String, String>();
 			shuJu.put("MingCheng", "月还款额:");
 			shuJu.put("NeiRong", df.format(getYueHuanKuanE()));

@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+@SuppressLint("HandlerLeak") 
 public class MainActivity extends Activity {
 
 	final String TAG = "ANJIE";
@@ -63,11 +64,11 @@ public class MainActivity extends Activity {
 		/**
 		 * 商业贷款
 		 */
-		SYDK,
+		商业贷款,
 		/**
 		 * 公积金贷款
 		 */
-		GJJDK
+		公积金贷款
 	}
 
 	/**
@@ -82,12 +83,12 @@ public class MainActivity extends Activity {
 		/**
 		 * 等额本息
 		 */
-		DEBX,
+		等额本息,
 
 		/**
 		 * 等额本金
 		 */
-		DEBJ
+		等额本金
 	}
 
 	private DKLB daiKuanLeiBei;
@@ -310,11 +311,11 @@ public class MainActivity extends Activity {
 			case R.id.SpDaikuanLeibie:
 				switch (position) {
 				case 0:
-					daiKuanLeiBei = DKLB.SYDK;
+					daiKuanLeiBei = DKLB.商业贷款;
 					changeDaiKuanLeibie(position);
 					break;
 				case 1:
-					daiKuanLeiBei = DKLB.GJJDK;
+					daiKuanLeiBei = DKLB.公积金贷款;
 					changeDaiKuanLeibie(position);
 					break;
 				}
@@ -323,11 +324,11 @@ public class MainActivity extends Activity {
 			case R.id.SpJiSuanFangFa:
 				switch (position) {
 				case 0:
-					jiSuanFangFa = JSFF.DEBX;
+					jiSuanFangFa = JSFF.等额本息;
 					Log.i(TAG, "计算方法为：等额本息" + " postion=" + position);
 					break;
 				default:
-					jiSuanFangFa = JSFF.DEBJ;
+					jiSuanFangFa = JSFF.等额本金;
 					Log.i(TAG, "计算方法为：等额本金" + " postion=" + position);
 					break;
 				}
@@ -375,7 +376,7 @@ public class MainActivity extends Activity {
 		private void setLiLvZheKou(int position, DKLB daiKuanLeibie) {
 			
 			//商业贷款类别，根据利率折扣计算利率
-			if (daiKuanLeibie == DKLB.SYDK)
+			if (daiKuanLeibie == DKLB.商业贷款)
 				switch (position) {
 				case 0:
 					etNianLiLv.setText(String.format("%.3f", systemLiLv * 0.7));
