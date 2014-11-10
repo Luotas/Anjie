@@ -38,9 +38,12 @@ public class AnJieUity {
 	public List<Map<String, String>> DengEBenXi(int daiKuanZongE,
 			double yueLiLv, int daiKuanQiXian) {
 
+		Log.i(TAG,"贷款总额："+daiKuanZongE);
 		setDaiKuanZongE(daiKuanZongE);
+		Log.i(TAG,"贷款期限："+daiKuanQiXian);
 		setDaiKuanQiXian(daiKuanQiXian);
-
+		Log.i(TAG,"贷款月利率："+yueLiLv);
+		
 		DecimalFormat df = new DecimalFormat("#.00");
 		double zongLiXi = 0;
 

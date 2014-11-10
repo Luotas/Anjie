@@ -163,6 +163,13 @@ public class MainActivity extends Activity {
 		spLilvzhekou
 				.setOnItemSelectedListener(new SpinnerOnItemSelectedListener());
 
+		// 设置Spinner初始化选中项目，并触发OnItemSelectedListener事件，
+		spDaikuanleibie.setSelection(0, true);
+		spJisuanfangfa.setSelection(0, true);
+		spDaikuanqixian.setSelection(19, true);
+		spLilvmoshi.setSelection(0, true);
+		spLilvzhekou.setSelection(4, true);
+
 		btJS.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -209,7 +216,7 @@ public class MainActivity extends Activity {
 					intent.putExtra("DaiKuanLeiBei", daiKuanLeiBei);
 					intent.putExtra("JiSuanFangFa", jiSuanFangFa);
 					intent.putExtra("DaiKuanQiXian", daiKuanQiXian);
-					Log.i(TAG, "贷款期限：" + daiKuanQiXian);
+					Log.i(TAG, "MA贷款期限：" + daiKuanQiXian);
 					startActivity(intent);
 				} else {
 					m_Message.what = flag;
@@ -247,13 +254,6 @@ public class MainActivity extends Activity {
 		String[] shydlilvzhekouItems = getResources().getStringArray(
 				R.array.spshydlilvzhekou);
 		initSpinner(shydlilvzhekouItems, spLilvzhekou);
-
-		spDaikuanleibie.setSelection(0, false);
-		spJisuanfangfa.setSelection(0, false);
-		spDaikuanqixian.setSelection(19, false);
-		spLilvmoshi.setSelection(0, false);
-		spLilvzhekou.setSelection(4, false);
-
 	}
 
 	/**
@@ -306,8 +306,19 @@ public class MainActivity extends Activity {
 				int position, long id) {
 
 			switch (parent.getId()) {
+			// 根据贷款类别设置贷款折扣以及贷款利息信息
 			case R.id.SpDaikuanLeibie:
-				changeDaiKuanLeibie(position);
+				switch (position) {
+				case 0:
+					daiKuanLeiBei = DKLB.SYDK;
+					changeDaiKuanLeibie(position);
+					break;
+				case 1:
+					daiKuanLeiBei = DKLB.GJJDK;
+					changeDaiKuanLeibie(position);
+					break;
+				}
+
 				break;
 			case R.id.SpJiSuanFangFa:
 				switch (position) {
@@ -335,7 +346,7 @@ public class MainActivity extends Activity {
 					etNianLiLv.setEnabled(false);
 					spLilvzhekou.setEnabled(true);
 					etNianLiLv.clearFocus();
-					setLiLvZheKou(_positon);
+					setLiLvZheKou(_positon, daiKuanLeiBei);
 					break;
 
 				// 自定义利率
@@ -355,59 +366,84 @@ public class MainActivity extends Activity {
 			 * >其他上浮(1.2)</item>
 			 */
 			case R.id.spLiLvZheKou:
-				setLiLvZheKou(position);
+				setLiLvZheKou(position, daiKuanLeiBei);
 				break;
 			}
 		}
 
-		private void setLiLvZheKou(int position) {
-			switch (position) {
-			case 0:
-				etNianLiLv.setText(String.format("%.3f", systemLiLv * 0.7));
-				Log.i(TAG, "贷款利率为：" + systemLiLv * 0.7 + " postion=" + position);
-				break;
-			case 1:
-				etNianLiLv.setText(String.format("%.2f", systemLiLv * 0.8));
-				Log.i(TAG, "贷款利率为：" + systemLiLv * 0.8 + " postion=" + position);
-				break;
-			case 2:
-				etNianLiLv.setText(String.format("%.4f", systemLiLv * 0.85));
-				Log.i(TAG, "贷款利率为：" + systemLiLv * 0.85 + " postion="
-						+ position);
-				break;
-			case 3:
-				etNianLiLv.setText(String.format("%.4f", systemLiLv * 0.9));
-				Log.i(TAG, "贷款利率为：" + systemLiLv * 0.9 + " postion=" + position);
-				break;
-			case 4:
-				etNianLiLv.setText(String.valueOf(systemLiLv));
-				Log.i(TAG, "贷款利率为：" + systemLiLv + " postion=" + position);
-				break;
-			case 5:
-				etNianLiLv.setText(String.format("%.3f", systemLiLv * 1.1));
-				Log.i(TAG, "贷款利率为：" + systemLiLv * 1.1 + " postion=" + position);
-				break;
-			case 6:
-				etNianLiLv.setText(String.format("%.4f", systemLiLv * 1.05));
-				Log.i(TAG, "贷款利率为：" + systemLiLv * 1.05 + " postion="
-						+ position);
-				break;
-			case 7:
-				etNianLiLv.setText(String.format("%.4f", systemLiLv * 1.15));
-				Log.i(TAG, "贷款利率为：" + systemLiLv * 1.15 + " postion="
-						+ position);
-				break;
-			case 8:
-				etNianLiLv.setText(String.format("%.2f", systemLiLv * 1.2));
-				// Log.i(TAG, "贷款利率为："+systemLiLv*1.2+" postion="+position);
-				break;
-			}
+		// 根据利率折扣以及贷款类别设置利率
+		private void setLiLvZheKou(int position, DKLB daiKuanLeibie) {
+			
+			//商业贷款类别，根据利率折扣计算利率
+			if (daiKuanLeibie == DKLB.SYDK)
+				switch (position) {
+				case 0:
+					etNianLiLv.setText(String.format("%.3f", systemLiLv * 0.7));
+					Log.i(TAG, "贷款利率为：" + systemLiLv * 0.7 + " postion="
+							+ position);
+					break;
+				case 1:
+					etNianLiLv.setText(String.format("%.2f", systemLiLv * 0.8));
+					Log.i(TAG, "贷款利率为：" + systemLiLv * 0.8 + " postion="
+							+ position);
+					break;
+				case 2:
+					etNianLiLv
+							.setText(String.format("%.4f", systemLiLv * 0.85));
+					Log.i(TAG, "贷款利率为：" + systemLiLv * 0.85 + " postion="
+							+ position);
+					break;
+				case 3:
+					etNianLiLv.setText(String.format("%.4f", systemLiLv * 0.9));
+					Log.i(TAG, "贷款利率为：" + systemLiLv * 0.9 + " postion="
+							+ position);
+					break;
+				case 4:
+					etNianLiLv.setText(String.valueOf(systemLiLv));
+					Log.i(TAG, "贷款利率为：" + systemLiLv + " postion=" + position);
+					break;
+				case 5:
+					etNianLiLv.setText(String.format("%.3f", systemLiLv * 1.1));
+					Log.i(TAG, "贷款利率为：" + systemLiLv * 1.1 + " postion="
+							+ position);
+					break;
+				case 6:
+					etNianLiLv
+							.setText(String.format("%.4f", systemLiLv * 1.05));
+					Log.i(TAG, "贷款利率为：" + systemLiLv * 1.05 + " postion="
+							+ position);
+					break;
+				case 7:
+					etNianLiLv
+							.setText(String.format("%.4f", systemLiLv * 1.15));
+					Log.i(TAG, "贷款利率为：" + systemLiLv * 1.15 + " postion="
+							+ position);
+					break;
+				case 8:
+					etNianLiLv.setText(String.format("%.2f", systemLiLv * 1.2));
+					// Log.i(TAG, "贷款利率为："+systemLiLv*1.2+" postion="+position);
+					break;
+				}
+			else
+				//公积金贷款类别，根据利率折扣计算利率
+				switch (position) {
+				case 0:
+					etNianLiLv.setText(String.valueOf(systemLiLv));
+					Log.i(TAG, "贷款利率为：" + systemLiLv + " postion=" + position);
+					break;
+				case 1:
+					etNianLiLv.setText(String.format("%.3f", systemLiLv * 1.1));
+					Log.i(TAG, "贷款利率为：" + systemLiLv * 1.1 + " postion="
+							+ position);
+					break;
+				}
 		}
 
 		private void changeDaiKuanLeibie(int position) {
 			// 商业贷款
 			if (0 == position) {
 				spLilvmoshi.setSelection(0, false);
+				Log.i(TAG, "商业贷款利率：" + SYSTEMSYDKSYLILV);
 				systemLiLv = SYSTEMSYDKSYLILV;
 
 				// 建立数据源
@@ -436,8 +472,7 @@ public class MainActivity extends Activity {
 						android.R.layout.simple_spinner_item, mItems);
 				_Adapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
 				spLilvzhekou.setAdapter(_Adapter);
-
-				Log.i(TAG, "设置的公积金利率为：" + systemLiLv);
+				spLilvzhekou.setSelection(0, false);
 			}
 
 			etNianLiLv.setText(String.valueOf(systemLiLv));

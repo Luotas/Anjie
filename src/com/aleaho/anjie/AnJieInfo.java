@@ -54,6 +54,12 @@ public class AnJieInfo extends Activity {
 		daiKuanLeiBei = (DKLB) intent.getSerializableExtra("DaiKuanLeiBei");
 		jiSuanFangFa = (JSFF) intent.getSerializableExtra("JiSuanFangFa");
 
+		Log.i(TAG, "AnJieInfo获得信息-------------------");
+		Log.i(TAG, "AnJieInfo贷款利率："+daiKuanLilv);
+		Log.i(TAG, "AnJieInfo贷款总额："+daiKuanZongE);
+		Log.i(TAG, "AnJieInfo贷款期限："+daiKuanQiXian);
+		Log.i(TAG, "AnJieInfo--------------------------");
+		
 		lvAnJieInfo = (ListView) findViewById(R.id.lvAnJieInfo);
 		lvhuizongxinxi = (ListView) findViewById(R.id.lvhuizongxinxi);
 
@@ -61,21 +67,24 @@ public class AnJieInfo extends Activity {
 		if (daiKuanLilv != 0 || daiKuanZongE != 0 || daiKuanQiXian != 0) {
 
 			// 等额本息
-			if (jiSuanFangFa == JSFF.DEBX)
+			if (jiSuanFangFa == JSFF.DEBX) {
+				Log.i(TAG, "等额本息开始计算------------");
 				data = anJieUity.DengEBenXi(daiKuanZongE, daiKuanLilv,
 						daiKuanQiXian);
+			}
 			// 等额本金
-			else if (jiSuanFangFa == JSFF.DEBJ)
+			else if (jiSuanFangFa == JSFF.DEBJ) {
+				Log.i(TAG, "等额本金开始计算------------");
 				data = anJieUity.DengEBenJin(daiKuanZongE, daiKuanLilv,
 						daiKuanQiXian);
+			}
 
 			Log.i(TAG, "还款明细计算结束------------");
 
 			hzData = anJieUity.getData(jiSuanFangFa);
 
-			
-			Log.i(TAG, "hzData的数据为："+hzData.size());
-			
+			Log.i(TAG, "hzData的数据为：" + hzData.size());
+			Log.i(TAG, "data的数据为：" + data.size());
 			SimpleAdapter adapter = new SimpleAdapter(this, data,
 					R.layout.lvinfoitem,
 					new String[] { "QiShu", "YueHuanKuanE", "LiXi", "BenJin",
