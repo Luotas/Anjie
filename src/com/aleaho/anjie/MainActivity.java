@@ -200,9 +200,8 @@ public class MainActivity extends Activity {
 					Log.e(TAG, "MainActivity界面flag=" + flag);
 				}
 
-				if (flag != 0) {
-					
-					Log.i(TAG,"准备跳转到显示界面了");
+				if (0 == flag) {
+					Log.i(TAG, "准备跳转到显示界面了");
 					Intent intent = new Intent(MainActivity.this,
 							AnJieInfo.class);
 					intent.putExtra("DaiKuanLiLv", daiKuanLilv);
@@ -210,13 +209,12 @@ public class MainActivity extends Activity {
 					intent.putExtra("DaiKuanLeiBei", daiKuanLeiBei);
 					intent.putExtra("JiSuanFangFa", jiSuanFangFa);
 					intent.putExtra("DaiKuanQiXian", daiKuanQiXian);
-					Log.i(TAG,"贷款期限："+daiKuanQiXian);
+					Log.i(TAG, "贷款期限：" + daiKuanQiXian);
 					startActivity(intent);
 				} else {
 					m_Message.what = flag;
 					m_Handler.sendMessage(m_Message);
 				}
-
 			}
 		});
 	}
@@ -428,7 +426,7 @@ public class MainActivity extends Activity {
 			else if (1 == position) {
 				spLilvmoshi.setSelection(0, false);
 				systemLiLv = SYSTEMGJJLILV;
-				Log.i(TAG,"获得系统公积金利率为："+systemLiLv);
+				Log.i(TAG, "获得系统公积金利率为：" + systemLiLv);
 				// 建立数据源
 				String[] mItems = getResources().getStringArray(
 						R.array.spgjjlilvzhekou);
@@ -438,8 +436,8 @@ public class MainActivity extends Activity {
 						android.R.layout.simple_spinner_item, mItems);
 				_Adapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
 				spLilvzhekou.setAdapter(_Adapter);
-				
-				Log.i(TAG,"设置的公积金利率为："+systemLiLv);
+
+				Log.i(TAG, "设置的公积金利率为：" + systemLiLv);
 			}
 
 			etNianLiLv.setText(String.valueOf(systemLiLv));

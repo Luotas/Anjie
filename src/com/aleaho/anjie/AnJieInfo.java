@@ -57,6 +57,7 @@ public class AnJieInfo extends Activity {
 		lvAnJieInfo = (ListView) findViewById(R.id.lvAnJieInfo);
 		lvhuizongxinxi = (ListView) findViewById(R.id.lvhuizongxinxi);
 
+		Log.i(TAG, "开始计算还款明细------------");
 		if (daiKuanLilv != 0 || daiKuanZongE != 0 || daiKuanQiXian != 0) {
 
 			// 等额本息
@@ -65,12 +66,16 @@ public class AnJieInfo extends Activity {
 						daiKuanQiXian);
 			// 等额本金
 			else if (jiSuanFangFa == JSFF.DEBJ)
-
 				data = anJieUity.DengEBenJin(daiKuanZongE, daiKuanLilv,
 						daiKuanQiXian);
 
+			Log.i(TAG, "还款明细计算结束------------");
+
 			hzData = anJieUity.getData(jiSuanFangFa);
 
+			
+			Log.i(TAG, "hzData的数据为："+hzData.size());
+			
 			SimpleAdapter adapter = new SimpleAdapter(this, data,
 					R.layout.lvinfoitem,
 					new String[] { "QiShu", "YueHuanKuanE", "LiXi", "BenJin",
@@ -83,8 +88,15 @@ public class AnJieInfo extends Activity {
 							"NeiRong" }, new int[] { R.id.mingcheng,
 							R.id.neirong });
 
-			lvhuizongxinxi.setAdapter(adapter1);
-			lvAnJieInfo.setAdapter(adapter);
+			Log.i(TAG, "数据已布置完成，等待显示！！！");
+
+			try {
+				lvhuizongxinxi.setAdapter(adapter1);
+				lvAnJieInfo.setAdapter(adapter);
+			} catch (Exception e) {
+				Log.e(TAG, "显示出错了:" + e.toString());
+			}
+			Log.i(TAG, "数据设置完成！！！");
 		}
 	}
 
