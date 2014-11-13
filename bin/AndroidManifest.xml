@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="15"
-        android:targetSdkVersion="20" />
+        android:targetSdkVersion="21" />
 
     <application
         android:allowBackup="true"
@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".AnJieInfo"/>
-        <activity android:name=".TiQianHuanKuan"></activity>
+        <activity android:name=".TiQianHuanKuan"
+            android:label="@string/tiqianhuangkuan"></activity>
     </application>
 
 </manifest>

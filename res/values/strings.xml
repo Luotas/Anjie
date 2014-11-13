@@ -3,8 +3,8 @@
     <string name="app_name">房贷计算器</string>
     <string name="daikuanjisuan">还款计算</string>
     <string name="tiqianhuangkuan">提前还款</string>
-    <string name="daikuanleibie">贷款类别</string>
-    <string name="jisuanfangfa">计算方法</string>
+    <string name="daikuanleibie">贷款类型</string>
+    <string name="jisuanfangfa">贷款方式</string>
     <string name="huankuannianxian">还款期限</string>
     <string name="lilvmoshi">利率模式</string>
     <string name="lilvzhekou">利率折扣</string>
@@ -16,6 +16,8 @@
     <string name="daikuanqishu">贷款期数：</string>
     <string name="yuejunhuankuan">月均还款：</string>
     <string name="shuruedu">请输入额度</string>
+    <string name="shurulilv">请输利率</string>
+    <string name="daikuanlilv">贷款利率</string>
     <string name="sydklilv">6.55</string>
     <string name="gjjlilv">4.50</string>
     
