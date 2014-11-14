@@ -25,7 +25,8 @@
     <!-- 贷款总额 -->
     <item name="etDaiKuanZongE" type="id">etDaiKuanZongE</item>
     <item name="TxTDaiKuanZongE" type="id">txtDaiKuanZongE</item>
-    
+    <item name="txtChuCiHuanKuanShiJian" type="id">txtChuCiHuanKuanShiJian</item>
+    <item name="dpChuCiHuanKuanShiJian" type="id">dpChuCiHuanKuanShiJian</item>
     <item name="btjisuan" type="id">btJiSuan</item>
 
 </resources>
