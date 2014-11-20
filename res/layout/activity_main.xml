@@ -134,15 +134,15 @@
         android:layout_marginTop="216dp"
         android:hint="@string/shuruedu"
         android:textColorHint="#238745"
-        android:inputType="numberSigned" />
+        android:inputType="numberDecimal" />
 
     
     <TextView
         android:id="@+id/danwei"
-        android:layout_width="25dp"
+        android:layout_width="wrap_content"
         android:layout_height="18dp"
         android:layout_marginLeft="215dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="225dp"
         android:text="@string/danwei" />
     
     <Button

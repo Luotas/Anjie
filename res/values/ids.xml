@@ -25,8 +25,26 @@
     <!-- 贷款总额 -->
     <item name="etDaiKuanZongE" type="id">etDaiKuanZongE</item>
     <item name="TxTDaiKuanZongE" type="id">txtDaiKuanZongE</item>
+    <!-- 初次还款时间 -->
     <item name="txtChuCiHuanKuanShiJian" type="id">txtChuCiHuanKuanShiJian</item>
-    <item name="dpChuCiHuanKuanShiJian" type="id">dpChuCiHuanKuanShiJian</item>
+    <item name="etChuCiHuanKuanShiJian" type="id">etChuCiHuanKuanShiJian</item>
+    <item name="etDaiKuanLiLv" type="id">etDaiKuanLiLv</item>
+
+    <!-- 计划还款时间 -->
+    <item name="txtJiHuaHuanKuanShiJian" type="id">txtJiHuaHuanKuanShiJian</item>
+    <item name="etJiHuaHuanKuanShiJian" type="id">etJiHuaHuanKuanShiJian</item>
+
+    <!-- 提前还款方式 -->
+    <item name="txtJiHuaHuanKuanFangShi" type="id">txtJiHuaHuanKuanFangShi</item>
+    <item name="spJiHuaHuanKuanFangShi" type="id">spJiHuaHuanKuanFangShi</item>
+
+    <!-- 提前还款金额 -->
+    <item name="txtJiHuaHuanKuanJinE" type="id">txtJiHuaHuanKuanJinE</item>
+    <item name="etJiHuaHuanKuanJinE" type="id">etJiHuaHuanKuanJinE</item>
+
+    <!-- 部分提前还款 -->
+    <item name="txtBuFenHuanKuanFangShi" type="id">txtBuFenHuanKuanFangShi</item>
+    <item name="spBuFenHuanKuanFangShi" type="id">spBuFenHuanKuanFangShi</item>
     <item name="btjisuan" type="id">btJiSuan</item>
 
 </resources>

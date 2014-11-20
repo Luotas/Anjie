@@ -23,7 +23,7 @@ public class AnJieInfo extends Activity {
 	private float daiKuanLilv = 0;
 	private int daiKuanZongE = 0;
 	private int daiKuanQiXian = 0;
-	private AnJieUity anJieUity = new AnJieUity();
+	private AnJieUtility anJieUtility = new AnJieUtility();
 
 	private List<Map<String, String>> data = null;
 
@@ -57,15 +57,15 @@ public class AnJieInfo extends Activity {
 
 			// 等额本息
 			if (jiSuanFangFa == JSFF.等额本息) {
-				data = anJieUity.DengEBenXi(daiKuanZongE, daiKuanLilv,
+				data = anJieUtility.DengEBenXi(daiKuanZongE, daiKuanLilv,
 						daiKuanQiXian);
 			}
 			// 等额本金
 			else if (jiSuanFangFa == JSFF.等额本金) {
-				data = anJieUity.DengEBenJin(daiKuanZongE, daiKuanLilv,
+				data = anJieUtility.DengEBenJin(daiKuanZongE, daiKuanLilv,
 						daiKuanQiXian);
 			}
-			hzData = anJieUity.getData(jiSuanFangFa);
+			hzData = anJieUtility.getData(jiSuanFangFa);
 
 			SimpleAdapter adapter = new SimpleAdapter(this, data,
 					R.layout.lvinfoitem,

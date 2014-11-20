@@ -19,7 +19,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-@SuppressLint("HandlerLeak") 
+@SuppressLint("HandlerLeak")
 public class MainActivity extends Activity {
 
 	final String TAG = "ANJIE";
@@ -124,7 +124,6 @@ public class MainActivity extends Activity {
 				R.string.gjjlilv));
 
 		initView();
-
 	}
 
 	/**
@@ -196,8 +195,8 @@ public class MainActivity extends Activity {
 				try {
 
 					Log.i(TAG, "获得当前贷款总额！！！！");
-					daiKuanZongE = Integer.parseInt(etDakuanzonge.getText()
-							.toString());
+					daiKuanZongE = (int)(Float.parseFloat(etDakuanzonge.getText()
+							.toString()) * 10000);
 					Log.i(TAG, "获得当前贷款总额:" + daiKuanZongE);
 
 				} catch (Exception e) {
@@ -266,10 +265,7 @@ public class MainActivity extends Activity {
 	 *            需要初始化的Spinner的实例对象
 	 */
 	private void initSpinner(String[] items, Spinner spinner) {
-		ArrayAdapter<String> _Adapter = new ArrayAdapter<String>(
-				MainActivity.this, android.R.layout.simple_spinner_item, items);
-		_Adapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
-		spinner.setAdapter(_Adapter);
+		Tools.initSpinner(MainActivity.this, items, spinner);
 	}
 
 	@Override
@@ -374,8 +370,8 @@ public class MainActivity extends Activity {
 
 		// 根据利率折扣以及贷款类别设置利率
 		private void setLiLvZheKou(int position, DKLB daiKuanLeibie) {
-			
-			//商业贷款类别，根据利率折扣计算利率
+
+			// 商业贷款类别，根据利率折扣计算利率
 			if (daiKuanLeibie == DKLB.商业贷款)
 				switch (position) {
 				case 0:
@@ -426,7 +422,7 @@ public class MainActivity extends Activity {
 					break;
 				}
 			else
-				//公积金贷款类别，根据利率折扣计算利率
+				// 公积金贷款类别，根据利率折扣计算利率
 				switch (position) {
 				case 0:
 					etNianLiLv.setText(String.valueOf(systemLiLv));

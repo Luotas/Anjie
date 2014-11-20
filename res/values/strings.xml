@@ -10,7 +10,12 @@
     <string name="lilvzhekou">利率折扣</string>
     <string name="daikuanzonge1">贷款总额</string>
     <string name="chucihuankuanshijian">初次还款时间</string>
-    <string name="danwei">元</string>
+    <string name="jihuahuankuanshijian">计划还款时间</string>
+    <string name="yuanhuankuanfangshi">原还款方式</string>
+    <string name="jihuahuankuanjine">计划还款金额</string>
+    <string name="jihuahuankuanjinetishi">万元的整数倍</string>
+    <string name="bufenhuankuanfangshi">处理方式</string>
+    <string name="danwei">万元</string>
     <string name="daikuanzonge2">贷款总额：</string>
     <string name="huankuanzonge">还款总额：</string>
     <string name="zhifulixi">支付利息：</string>
@@ -21,7 +26,8 @@
     <string name="daikuanlilv">贷款利率</string>
     <string name="sydklilv">6.55</string>
     <string name="gjjlilv">4.50</string>
-    
+    <string name="chucihuankuan">2014-11</string>
+    <string name="jihuahuankuan">2016-11</string>
     <string name="baifenhao">%</string>
     <string name="imQiShu">期数</string>
     <string name="imYueHuanKuan">月还款</string>
@@ -37,6 +43,16 @@
     <string-array name="spjisuanfangfa">
         <item>等额本息</item>
         <item>等额本金</item>
+    </string-array>
+    
+    <string-array name="spjihuankuanfangshi">
+        <item>一次提前还款</item>
+        <item>部分提前还款</item>
+    </string-array>
+    
+    <string-array name="spbufenhuankuanfangshi">
+        <item>缩短还款期限,月还款额不变</item>
+        <item>减少月还款额,还款期限不变</item>
     </string-array>
     <string-array name="sphuankuanqixian">
         <item>1年</item>

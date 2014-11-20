@@ -7,11 +7,14 @@ import java.util.List;
 import java.util.Map;
 
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.aleaho.anjie.MainActivity.JSFF;
 
-public class AnJieUity {
+public class AnJieUtility {
 
 	final String TAG = "ANJIE";
 	private int daiKuanZongE = 0;
@@ -217,7 +220,9 @@ public class AnJieUity {
 		Log.i(TAG, "-----------------------------");
 		return huanKuanHuiZong;
 	}
-
+	
+	
+	
 	public double getYueHuanKuanE() {
 		return yueHuanKuanE;
 	}
