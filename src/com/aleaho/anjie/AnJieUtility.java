@@ -6,14 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-import android.content.Context;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-
-import com.aleaho.anjie.MainActivity.JSFF;
-
+import com.aleaho.anjie.Data.*;
 public class AnJieUtility {
 
 	final String TAG = "ANJIE";

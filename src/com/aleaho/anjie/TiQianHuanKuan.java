@@ -23,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
+import com.aleaho.anjie.Data.*;
 
 public class TiQianHuanKuan extends Activity {
 
@@ -49,6 +50,13 @@ public class TiQianHuanKuan extends Activity {
 
 	private Button btjisuan = null;
 
+	private DKLB daiKuanLeiBei;
+	private JSFF jiSuanFangFa;
+	private JHHKFS jihuahuankuanfangshi;
+	private BFHKFS bufenhuankuanfangshi;
+
+	private int daiKuanQiXian;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -70,7 +78,7 @@ public class TiQianHuanKuan extends Activity {
 
 		etDaiKuanLiLv = (EditText) findViewById(R.id.etDaiKuanLiLv);
 		etDaiKuanZongE = (EditText) findViewById(R.id.etDaiKuanZongE);
-
+		etJiHuaHuanKuanJinE = (EditText) findViewById(R.id.etJiHuaHuanKuanJinE);
 		etChuCiHuanKuanShiJian = (EditText) findViewById(R.id.etChuCiHuanKuanShiJian);
 		etJiHuaHuanKuanShiJian = (EditText) findViewById(R.id.etJiHuaHuanKuanShiJian);
 
@@ -86,6 +94,7 @@ public class TiQianHuanKuan extends Activity {
 		initSpinner();
 		// getHuanKuanShiJian();
 
+		Log.i(TAG, "进入提前还款模式");
 		SpDaikuanLeibie
 				.setOnItemSelectedListener(new SpinnerOnItemSelectedListener());
 		SpJiSuanFangFa
@@ -260,6 +269,66 @@ public class TiQianHuanKuan extends Activity {
 		public void onItemSelected(AdapterView<?> parent, View view,
 				int position, long id) {
 			// TODO Auto-generated method stub
+			switch (parent.getId()) {
+			// 贷款类型
+			case R.id.SpDaikuanLeibie:
+				switch (position) {
+
+				}
+				// 计算方法
+			case R.id.SpJiSuanFangFa:
+				switch (position) {
+				case 0: {
+					jiSuanFangFa = JSFF.等额本息;
+					break;
+				}
+				case 1: {
+					jiSuanFangFa = JSFF.等额本息;
+					break;
+				}
+				}
+
+				// 还款期限
+			case R.id.SpDaiKuanQiXian:
+				daiKuanQiXian = (position + 1) * 12;
+				break;
+
+			// 计划还款方式：一次提前还款，部分提前还款
+			case R.id.spJiHuaHuanKuanFangShi:
+				switch (position) {
+
+				case 0:
+					jihuahuankuanfangshi = JHHKFS.YCHW;
+					txtJiHuaHuanKuanJinE.setVisibility(View.GONE);
+					etJiHuaHuanKuanJinE.setVisibility(View.GONE);
+					txtHuanKuanDanWei.setVisibility(View.GONE);
+					txtBuFenHuanKuanFangShi.setVisibility(View.GONE);
+					spBuFenHuanKuanFangShi.setVisibility(View.GONE);
+					break;
+				case 1:
+					jihuahuankuanfangshi = JHHKFS.BFHK;
+					txtJiHuaHuanKuanJinE.setVisibility(View.VISIBLE);
+					etJiHuaHuanKuanJinE.setVisibility(View.VISIBLE);
+					txtHuanKuanDanWei.setVisibility(View.VISIBLE);
+					txtBuFenHuanKuanFangShi.setVisibility(View.VISIBLE);
+					spBuFenHuanKuanFangShi.setVisibility(View.VISIBLE);
+
+					break;
+
+				}
+
+				// 部分还款方式：还款期限不变，缩小还款额;还款额不变，缩短还款期限。
+			case R.id.spBuFenHuanKuanFangShi:
+				switch (position) {
+				case 0:
+					bufenhuankuanfangshi = BFHKFS.HKEBB;
+					break;
+				case 1:
+					bufenhuankuanfangshi = BFHKFS.QXBB;
+					break;
+				}
+
+			}
 
 		}
 

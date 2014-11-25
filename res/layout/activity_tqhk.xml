@@ -107,7 +107,7 @@
         android:layout_marginLeft="92dp"
         android:layout_marginTop="157dp"
         android:hint="@string/shurulilv"
-        android:inputType="numberSigned"
+        android:inputType="numberDecimal"
         android:textColorHint="#731245" >
     </EditText>
 
@@ -136,10 +136,10 @@
         android:layout_width="151dp"
         android:layout_height="34dp"
         android:layout_marginLeft="92dp"
-        android:layout_marginTop="196dp" 
+        android:layout_marginTop="196dp"
         android:focusable="false"
         android:inputType="date"
-        android:text="@string/chucihuankuan"/>
+        android:text="@string/chucihuankuan" />
 
     <!-- 计划还款时间 -->
 
@@ -160,8 +160,9 @@
         android:focusable="false"
         android:inputType="date"
         android:text="@string/jihuahuankuan" />
-    
-  <!-- 还款方式 -->
+
+    <!-- 还款方式 -->
+
     <TextView
         android:id="@id/txtJiHuaHuanKuanFangShi"
         android:layout_width="80dp"
@@ -176,9 +177,9 @@
         android:layout_height="34dp"
         android:layout_marginLeft="92dp"
         android:layout_marginTop="274dp" />
-    
-    
-    <!--部分还款， 还款金额 -->
+
+    <!-- 部分还款， 还款金额 -->
+
     <TextView
         android:id="@id/txtJiHuaHuanKuanJinE"
         android:layout_width="80dp"
@@ -205,8 +206,9 @@
         android:layout_marginLeft="215dp"
         android:layout_marginTop="325dp"
         android:text="@string/danwei" />
-    
+
     <!-- 部分还款方式选择 -->
+
     <TextView
         android:id="@id/txtBuFenHuanKuanFangShi"
         android:layout_width="80dp"

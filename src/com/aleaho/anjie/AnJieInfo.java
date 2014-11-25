@@ -3,8 +3,7 @@ package com.aleaho.anjie;
 import java.util.List;
 import java.util.Map;
 
-import com.aleaho.anjie.MainActivity.DKLB;
-import com.aleaho.anjie.MainActivity.JSFF;
+import com.aleaho.anjie.Data.*;
 
 import android.app.Activity;
 import android.content.Intent;

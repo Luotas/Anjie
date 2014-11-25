@@ -1,5 +1,7 @@
 package com.aleaho.anjie;
 
+import com.aleaho.anjie.Data.*;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -55,41 +57,7 @@ public class MainActivity extends Activity {
 
 	Button btJS = null;
 
-	/**
-	 * 贷款类别
-	 * 
-	 * @author lenovo SYDK:商业贷款 GJJDK：公积金贷款
-	 */
-	public enum DKLB {
-		/**
-		 * 商业贷款
-		 */
-		商业贷款,
-		/**
-		 * 公积金贷款
-		 */
-		公积金贷款
-	}
-
-	/**
-	 * 计算方式
-	 * 
-	 * @author lenovo
-	 * @DEBX:等额本息
-	 * @DEBJ:等额本金
-	 */
-	public enum JSFF {
-
-		/**
-		 * 等额本息
-		 */
-		等额本息,
-
-		/**
-		 * 等额本金
-		 */
-		等额本金
-	}
+	
 
 	private DKLB daiKuanLeiBei;
 	private JSFF jiSuanFangFa;
