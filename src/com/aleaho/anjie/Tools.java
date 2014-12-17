@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import android.annotation.SuppressLint;
+import android.app.Application;
 import android.content.Context;
 import android.text.format.DateFormat;
 import android.widget.ArrayAdapter;
@@ -52,16 +53,40 @@ public class Tools {
 
 	public static CharSequence clanderToString(Calendar calendar, String style) {
 
-		//SimpleDateFormat sdf = new SimpleDateFormat(style);
-		//String dateStr = sdf.format(calendar.getTime());
-		CharSequence dateStr= DateFormat.format(style, calendar);
+		// SimpleDateFormat sdf = new SimpleDateFormat(style);
+		// String dateStr = sdf.format(calendar.getTime());
+		CharSequence dateStr = DateFormat.format(style, calendar);
 		return dateStr;
 	}
-	
-	@SuppressLint("SimpleDateFormat") 
+
+	@SuppressLint("SimpleDateFormat")
 	public static String clanderTodatetime(Calendar calendar, String style) {
 		SimpleDateFormat sdf = new SimpleDateFormat(style);
 		String dateStr = sdf.format(calendar.getTime());
 		return dateStr;
+	}
+
+	public static float StringToFloat(String text) {
+
+		float result;
+		try {
+			result = Float.parseFloat(text);
+		} catch (NumberFormatException e) {
+			result = 0;
+		}
+
+		return result;
+	}
+
+	public static int StringToInteger(String text) {
+
+		int result;
+		try {
+			result = Integer.parseInt(text);
+		} catch (NumberFormatException e) {
+			result = -1;
+		}
+
+		return result;
 	}
 }

@@ -57,8 +57,6 @@ public class MainActivity extends Activity {
 
 	Button btJS = null;
 
-	
-
 	private DKLB daiKuanLeiBei;
 	private JSFF jiSuanFangFa;
 
@@ -85,10 +83,10 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		SYSTEMSYDKSYLILV = Float.parseFloat(getResources().getString(
+		SYSTEMSYDKSYLILV = Float.parseFloat(this.getResources().getString(
 				R.string.sydklilv));
 
-		SYSTEMGJJLILV = Float.parseFloat(getResources().getString(
+		SYSTEMGJJLILV = Float.parseFloat(this.getResources().getString(
 				R.string.gjjlilv));
 
 		initView();
@@ -115,7 +113,7 @@ public class MainActivity extends Activity {
 		etDakuanzonge = (EditText) findViewById(R.id.etDaiKuanZongE);
 		etDakuanzonge.setFocusable(true);
 
-		// 获得利率
+		// 设定系统利率
 		systemLiLv = SYSTEMSYDKSYLILV;
 
 		initSpinner();
@@ -163,8 +161,8 @@ public class MainActivity extends Activity {
 				try {
 
 					Log.i(TAG, "获得当前贷款总额！！！！");
-					daiKuanZongE = (int)(Float.parseFloat(etDakuanzonge.getText()
-							.toString()) * 10000);
+					daiKuanZongE = (int) (Float.parseFloat(etDakuanzonge
+							.getText().toString()) * 10000);
 					Log.i(TAG, "获得当前贷款总额:" + daiKuanZongE);
 
 				} catch (Exception e) {

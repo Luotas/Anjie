@@ -1,6 +1,7 @@
 package com.aleaho.anjie;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -50,12 +51,30 @@ public class TiQianHuanKuan extends Activity {
 
 	private Button btjisuan = null;
 
+	EarlyPayMent earlyPayMent = new EarlyPayMent();
+	Message msg = null;
+
 	private DKLB daiKuanLeiBei;
 	private JSFF jiSuanFangFa;
 	private JHHKFS jihuahuankuanfangshi;
 	private BFHKFS bufenhuankuanfangshi;
 
+	private Date shouCiHuanKuan;
+	private Date jiHuaHuanKuan;
+	private float daiKuanZongE;
+	private int huanKuanZongE;
+
 	private int daiKuanQiXian;
+	// 系统初始化利率
+	/**
+	 * 商业贷款利率
+	 */
+	private float SYSTEMSYDKSYLILV = 0;
+	/**
+	 * 公积金贷款利率
+	 */
+	private float SYSTEMGJJLILV = 0;
+	private float systemLiLv = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +82,13 @@ public class TiQianHuanKuan extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tqhk);
 
+		SYSTEMSYDKSYLILV = Float.parseFloat(this.getResources().getString(
+				R.string.sydklilv));
+
+		SYSTEMGJJLILV = Float.parseFloat(this.getResources().getString(
+				R.string.gjjlilv));
+		// 设定系统利率
+		systemLiLv = SYSTEMSYDKSYLILV;
 		initView();
 
 	}
@@ -119,29 +145,64 @@ public class TiQianHuanKuan extends Activity {
 
 		btjisuan.setOnClickListener(new OnClickListener() {
 
+			@SuppressWarnings("deprecation")
 			@Override
 			public void onClick(View v) {
 
+				msg = m_Handler.obtainMessage();
+
+				int flag = 0;
+				Log.i(TAG, "开始计算了！");
+				shouCiHuanKuan = Tools.strToDate("yyyy-MM",
+						etChuCiHuanKuanShiJian.getText().toString());
+				jiHuaHuanKuan = Tools.strToDate("yyyy-MM",
+						etJiHuaHuanKuanShiJian.getText().toString());
+				Log.i(TAG, "首次还款时间" + shouCiHuanKuan + "  计划还款时间："
+						+ shouCiHuanKuan);
+
+				Log.i(TAG, "计划划款年份" + jiHuaHuanKuan.getYear());
+				Log.i(TAG, "首次还款年份" + shouCiHuanKuan.getYear());
+
+				int tiQianQiShu = (jiHuaHuanKuan.getYear() - shouCiHuanKuan
+						.getYear())
+						* 12
+						+ jiHuaHuanKuan.getMonth()
+						- shouCiHuanKuan.getMonth() - 1;
+
+				Log.i(TAG, "计算提前还款结束！" + tiQianQiShu);
+				if (tiQianQiShu > daiKuanQiXian) {
+					flag = 1;
+				}
+
+				Log.i(TAG, "部分还款方式：" + jihuahuankuanfangshi);
+				// 部分还款比较还款金额与贷款总额关系
+				if (jihuahuankuanfangshi == JHHKFS.BFHK) {
+					daiKuanZongE = Tools.StringToFloat(etDaiKuanZongE.getText()
+							.toString());
+					huanKuanZongE = Tools.StringToInteger(etJiHuaHuanKuanJinE
+							.getText().toString());
+
+					if (-1 == huanKuanZongE) {
+						flag = flag + 2;
+					} else if (huanKuanZongE > daiKuanZongE) {
+						flag = flag + 3;
+					}
+				}
+
+				Log.i(TAG, "flag值为:" + flag);
+				if (flag == 0) {
+
+				} else {
+
+					msg.what = flag;
+					Log.i(TAG, "消息已经传递出去！");
+					m_Handler.sendMessage(msg);
+				}
+
+				// earlyPayMent.setBfhkfs()
+
 			}
 		});
-	}
-
-	private void getHuanKuanShiJian() {
-		// TODO Auto-generated method stub
-
-		Log.i(TAG, "初始化还款时间。");
-		Calendar localCalendar = Calendar.getInstance();
-		localCalendar.setTime(Tools.strToDate("yyyy-MM", etChuCiHuanKuanShiJian
-				.getText().toString()));
-		clChuCiHuanKuan = localCalendar;
-		localCalendar.setTime(Tools.strToDate("yyyy-MM", etJiHuaHuanKuanShiJian
-				.getText().toString()));
-		clJiHuaHuanKuan = localCalendar;
-
-		Log.i(TAG,
-				"初次还款时间：" + Tools.clanderTodatetime(clChuCiHuanKuan, "YYYY-MM")
-						+ "小于计划还款时间:"
-						+ Tools.clanderTodatetime(clJiHuaHuanKuan, "YYYY-MM"));
 	}
 
 	private void initSpinner() {
@@ -273,19 +334,28 @@ public class TiQianHuanKuan extends Activity {
 			// 贷款类型
 			case R.id.SpDaikuanLeibie:
 				switch (position) {
+				// 设置为商业贷款利率
+				case 0:
+					systemLiLv = SYSTEMSYDKSYLILV;
+					// etDaiKuanLiLv.setText()
+					etDaiKuanLiLv.setText(String.valueOf(systemLiLv));
+					break;
+				case 1:
+					// 设置为公积金贷款利率
+					systemLiLv = SYSTEMGJJLILV;
+					etDaiKuanLiLv.setText(String.valueOf(systemLiLv));
+					break;
 
 				}
 				// 计算方法
 			case R.id.SpJiSuanFangFa:
 				switch (position) {
-				case 0: {
+				case 0:
 					jiSuanFangFa = JSFF.等额本息;
 					break;
-				}
-				case 1: {
+				case 1:
 					jiSuanFangFa = JSFF.等额本息;
 					break;
-				}
 				}
 
 				// 还款期限
@@ -296,7 +366,6 @@ public class TiQianHuanKuan extends Activity {
 			// 计划还款方式：一次提前还款，部分提前还款
 			case R.id.spJiHuaHuanKuanFangShi:
 				switch (position) {
-
 				case 0:
 					jihuahuankuanfangshi = JHHKFS.YCHW;
 					txtJiHuaHuanKuanJinE.setVisibility(View.GONE);
@@ -312,7 +381,6 @@ public class TiQianHuanKuan extends Activity {
 					txtHuanKuanDanWei.setVisibility(View.VISIBLE);
 					txtBuFenHuanKuanFangShi.setVisibility(View.VISIBLE);
 					spBuFenHuanKuanFangShi.setVisibility(View.VISIBLE);
-
 					break;
 
 				}
@@ -327,9 +395,7 @@ public class TiQianHuanKuan extends Activity {
 					bufenhuankuanfangshi = BFHKFS.QXBB;
 					break;
 				}
-
 			}
-
 		}
 
 		@Override
@@ -344,12 +410,18 @@ public class TiQianHuanKuan extends Activity {
 		@SuppressLint("HandlerLeak")
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-			case 0:
-
+			case 1:// 当提前还款时间长于或短于贷款期限，系统提示。
+				Toast.makeText(TiQianHuanKuan.this, "请调整提前还款日期！",
+						Toast.LENGTH_SHORT).show();
 				break;
 
-			case 1:
-
+			case 2:
+				Toast.makeText(TiQianHuanKuan.this, "请检查贷款总额以及提前还款金额！",
+						Toast.LENGTH_SHORT).show();
+				break;
+			case 3:
+				Toast.makeText(TiQianHuanKuan.this, "请调整提前还款日期,以及还款金额！",
+						Toast.LENGTH_SHORT).show();
 				break;
 			}
 		}

@@ -46,13 +46,13 @@
     </string-array>
     
     <string-array name="spjihuankuanfangshi">
-        <item>一次提前还款</item>
+        <item>一次提前还清</item>
         <item>部分提前还款</item>
     </string-array>
     
     <string-array name="spbufenhuankuanfangshi">
-        <item>缩短还款期限,月还款额不变</item>
-        <item>减少月还款额,还款期限不变</item>
+        <item>月还款额不变,缩短还款期限</item>
+        <item>还款期限不变,减少月还款额</item>
     </string-array>
     <string-array name="sphuankuanqixian">
         <item>1年</item>

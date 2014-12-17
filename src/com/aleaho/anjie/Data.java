@@ -47,7 +47,7 @@ public class Data {
 	public enum JHHKFS{
 		
 		/**
-		 * 一次提前还款
+		 * 一次提前还清
 		 */
 		YCHW,
 		/**
