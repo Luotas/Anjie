@@ -24,6 +24,8 @@
         <activity android:name=".AnJieInfo"/>
         <activity android:name=".TiQianHuanKuan"
             android:label="@string/tiqianhuangkuan"></activity>
+        <activity android:name=".Setting"
+            android:label="@string/setting"></activity>
     </application>
 
 </manifest>

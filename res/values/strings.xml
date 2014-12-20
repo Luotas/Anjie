@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">房贷计算器</string>
+    <string name="setting">设置</string>
     <string name="daikuanjisuan">还款计算</string>
     <string name="tiqianhuangkuan">提前还款</string>
     <string name="daikuanleibie">贷款类型</string>
@@ -35,11 +36,16 @@
     <string name="imBenJin">本金</string>
     <string name="imSuoQianBenJin">所欠本金</string>
     <string name="jisuan">计算</string>
+    
+    <string name="gjjll">公积金贷款利率</string>
+    <string name="sydkll">商业贷款利率</string>
+    
+    
 
     <string-array name="spdaikuanleibie">
         <item>商业贷款</item>
         <item>公积金贷款</item>
-    </string-array>
+    </string-array>  
     <string-array name="spjisuanfangfa">
         <item>等额本息</item>
         <item>等额本金</item>

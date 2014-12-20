@@ -1,5 +1,7 @@
 package com.aleaho.anjie;
 
+import java.util.Properties;
+
 import com.aleaho.anjie.Data.*;
 
 import android.annotation.SuppressLint;
@@ -83,13 +85,27 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		SYSTEMSYDKSYLILV = Float.parseFloat(this.getResources().getString(
-				R.string.sydklilv));
-
-		SYSTEMGJJLILV = Float.parseFloat(this.getResources().getString(
-				R.string.gjjlilv));
+		getLiLv();
 
 		initView();
+	}
+
+	private void getLiLv() {
+		// TODO Auto-generated method stub
+
+		Properties props = Tools.getProperties(this);
+
+		if (props != null) {
+
+			SYSTEMSYDKSYLILV = Float.parseFloat(props.get("sy").toString());
+			SYSTEMGJJLILV = Float.parseFloat(props.get("gjj").toString());
+
+		} else {
+			SYSTEMSYDKSYLILV = Float.parseFloat(this.getResources().getString(
+					R.string.sydklilv));
+			SYSTEMGJJLILV = Float.parseFloat(this.getResources().getString(
+					R.string.gjjlilv));
+		}
 	}
 
 	/**
@@ -253,6 +269,12 @@ public class MainActivity extends Activity {
 		if (id == R.id.tiqianhuangkuan) {
 
 			Intent intent = new Intent(this, TiQianHuanKuan.class);
+			startActivity(intent);
+		}
+		
+		if (id == R.id.setting) {
+
+			Intent intent = new Intent(this, Setting.class);
 			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);

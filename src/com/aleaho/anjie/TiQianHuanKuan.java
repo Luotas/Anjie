@@ -314,6 +314,12 @@ public class TiQianHuanKuan extends Activity {
 
 			return true;
 		}
+		if (id == R.id.setting) {
+
+			Intent intent = new Intent(this, Setting.class);
+			startActivity(intent);
+		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 

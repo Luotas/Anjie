@@ -52,46 +52,54 @@ public final class R {
         public static final int TxTDaiKuanQiXian=0x7f050005;
         public static final int TxTDaiKuanZongE=0x7f05000c;
         public static final int TxTDaikuanLeibie=0x7f050001;
+        public static final int TxTGJJDKLL=0x7f050022;
         public static final int TxTJiSuanFangFa=0x7f050003;
         public static final int TxTLiLvMoShi=0x7f050007;
+        public static final int TxtBFH1=0x7f050021;
+        public static final int TxtBFH2=0x7f050024;
+        public static final int TxtSYDKLL=0x7f05001f;
         public static final int baifenhao=0x7f05001d;
+        public static final int btSetting=0x7f050025;
         public static final int btjisuan=0x7f050018;
-        public static final int daikuanjisuan=0x7f050029;
+        public static final int daikuanjisuan=0x7f050030;
         public static final int danwei=0x7f05001e;
         public static final int etChuCiHuanKuanShiJian=0x7f05000e;
         public static final int etDaiKuanLiLv=0x7f05000f;
         /**  贷款总额 
          */
         public static final int etDaiKuanZongE=0x7f05000b;
+        public static final int etGJJDKLL=0x7f050023;
         public static final int etJiHuaHuanKuanJinE=0x7f050015;
         public static final int etJiHuaHuanKuanShiJian=0x7f050011;
         public static final int etNianLilv=0x7f050008;
+        public static final int etSYDKLL=0x7f050020;
         public static final int huizong=0x7f050019;
-        public static final int idanwei=0x7f050020;
-        public static final int itemBenJin=0x7f050027;
-        public static final int itemLiXi=0x7f050026;
-        public static final int itemQiShu=0x7f050024;
-        public static final int itemSuoQianBenJin=0x7f050028;
-        public static final int itemyueHuanKuanE=0x7f050025;
+        public static final int idanwei=0x7f050027;
+        public static final int itemBenJin=0x7f05002e;
+        public static final int itemLiXi=0x7f05002d;
+        public static final int itemQiShu=0x7f05002b;
+        public static final int itemSuoQianBenJin=0x7f05002f;
+        public static final int itemyueHuanKuanE=0x7f05002c;
         public static final int lvAnJieInfo=0x7f05001c;
         public static final int lvhuizongxinxi=0x7f05001a;
-        public static final int mingcheng=0x7f050022;
+        public static final int mingcheng=0x7f050029;
         public static final int mingxi=0x7f05001b;
-        public static final int neirong=0x7f050023;
+        public static final int neirong=0x7f05002a;
+        public static final int setting=0x7f050032;
         public static final int spBuFenHuanKuanFangShi=0x7f050017;
         public static final int spJiHuaHuanKuanFangShi=0x7f050013;
         /**  利率折扣 
          */
         public static final int spLiLvZheKou=0x7f050009;
-        public static final int tiqianhuangkuan=0x7f05002a;
+        public static final int tiqianhuangkuan=0x7f050031;
         /**  部分提前还款 
          */
         public static final int txtBuFenHuanKuanFangShi=0x7f050016;
         /**  初次还款时间 
          */
         public static final int txtChuCiHuanKuanShiJian=0x7f05000d;
-        public static final int txtDaiKuanLiLv=0x7f05001f;
-        public static final int txtHuanKuanDanWei=0x7f050021;
+        public static final int txtDaiKuanLiLv=0x7f050026;
+        public static final int txtHuanKuanDanWei=0x7f050028;
         /**  提前还款方式 
          */
         public static final int txtJiHuaHuanKuanFangShi=0x7f050012;
@@ -106,49 +114,53 @@ public final class R {
     public static final class layout {
         public static final int activity_anjie_info=0x7f030000;
         public static final int activity_main=0x7f030001;
-        public static final int activity_tqhk=0x7f030002;
-        public static final int huzongxinxiitem=0x7f030003;
-        public static final int lvinfoitem=0x7f030004;
+        public static final int activity_setting=0x7f030002;
+        public static final int activity_tqhk=0x7f030003;
+        public static final int huzongxinxiitem=0x7f030004;
+        public static final int lvinfoitem=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f090000;
     }
     public static final class string {
         public static final int app_name=0x7f060000;
-        public static final int baifenhao=0x7f06001c;
-        public static final int bufenhuankuanfangshi=0x7f06000e;
-        public static final int chucihuankuan=0x7f06001a;
-        public static final int chucihuankuanshijian=0x7f060009;
-        public static final int daikuanjisuan=0x7f060001;
-        public static final int daikuanleibie=0x7f060003;
-        public static final int daikuanlilv=0x7f060017;
-        public static final int daikuanqishu=0x7f060013;
-        public static final int daikuanzonge1=0x7f060008;
-        public static final int daikuanzonge2=0x7f060010;
-        public static final int danwei=0x7f06000f;
-        public static final int gjjlilv=0x7f060019;
-        public static final int huankuannianxian=0x7f060005;
-        public static final int huankuanzonge=0x7f060011;
-        public static final int imBenJin=0x7f060020;
-        public static final int imLiXi=0x7f06001f;
-        public static final int imQiShu=0x7f06001d;
-        public static final int imSuoQianBenJin=0x7f060021;
-        public static final int imYueHuanKuan=0x7f06001e;
-        public static final int jihuahuankuan=0x7f06001b;
-        public static final int jihuahuankuanjine=0x7f06000c;
-        public static final int jihuahuankuanjinetishi=0x7f06000d;
-        public static final int jihuahuankuanshijian=0x7f06000a;
-        public static final int jisuan=0x7f060022;
-        public static final int jisuanfangfa=0x7f060004;
-        public static final int lilvmoshi=0x7f060006;
-        public static final int lilvzhekou=0x7f060007;
-        public static final int shuruedu=0x7f060015;
-        public static final int shurulilv=0x7f060016;
-        public static final int sydklilv=0x7f060018;
-        public static final int tiqianhuangkuan=0x7f060002;
-        public static final int yuanhuankuanfangshi=0x7f06000b;
-        public static final int yuejunhuankuan=0x7f060014;
-        public static final int zhifulixi=0x7f060012;
+        public static final int baifenhao=0x7f06001d;
+        public static final int bufenhuankuanfangshi=0x7f06000f;
+        public static final int chucihuankuan=0x7f06001b;
+        public static final int chucihuankuanshijian=0x7f06000a;
+        public static final int daikuanjisuan=0x7f060002;
+        public static final int daikuanleibie=0x7f060004;
+        public static final int daikuanlilv=0x7f060018;
+        public static final int daikuanqishu=0x7f060014;
+        public static final int daikuanzonge1=0x7f060009;
+        public static final int daikuanzonge2=0x7f060011;
+        public static final int danwei=0x7f060010;
+        public static final int gjjlilv=0x7f06001a;
+        public static final int gjjll=0x7f060024;
+        public static final int huankuannianxian=0x7f060006;
+        public static final int huankuanzonge=0x7f060012;
+        public static final int imBenJin=0x7f060021;
+        public static final int imLiXi=0x7f060020;
+        public static final int imQiShu=0x7f06001e;
+        public static final int imSuoQianBenJin=0x7f060022;
+        public static final int imYueHuanKuan=0x7f06001f;
+        public static final int jihuahuankuan=0x7f06001c;
+        public static final int jihuahuankuanjine=0x7f06000d;
+        public static final int jihuahuankuanjinetishi=0x7f06000e;
+        public static final int jihuahuankuanshijian=0x7f06000b;
+        public static final int jisuan=0x7f060023;
+        public static final int jisuanfangfa=0x7f060005;
+        public static final int lilvmoshi=0x7f060007;
+        public static final int lilvzhekou=0x7f060008;
+        public static final int setting=0x7f060001;
+        public static final int shuruedu=0x7f060016;
+        public static final int shurulilv=0x7f060017;
+        public static final int sydklilv=0x7f060019;
+        public static final int sydkll=0x7f060025;
+        public static final int tiqianhuangkuan=0x7f060003;
+        public static final int yuanhuankuanfangshi=0x7f06000c;
+        public static final int yuejunhuankuan=0x7f060015;
+        public static final int zhifulixi=0x7f060013;
     }
     public static final class style {
         /** 
