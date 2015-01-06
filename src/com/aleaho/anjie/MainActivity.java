@@ -1,5 +1,6 @@
 package com.aleaho.anjie;
 
+import java.util.HashMap;
 import java.util.Properties;
 
 import com.aleaho.anjie.Data.*;
@@ -93,7 +94,7 @@ public class MainActivity extends Activity {
 	private void getLiLv() {
 		// TODO Auto-generated method stub
 
-		Properties props = Tools.getProperties(this);
+		Properties props = Tools.getProperties(this, Data.CONFIGFILE);
 
 		if (props != null) {
 
@@ -105,6 +106,20 @@ public class MainActivity extends Activity {
 					R.string.sydklilv));
 			SYSTEMGJJLILV = Float.parseFloat(this.getResources().getString(
 					R.string.gjjlilv));
+
+			HashMap<String, String> properties = new HashMap<String, String>();
+
+			properties.put("sy",
+					this.getResources().getString(R.string.sydklilv));
+			properties.put("gjj",
+					this.getResources().getString(R.string.gjjlilv));
+
+			boolean result = Tools.setProperties(this, Data.CONFIGFILE,
+					properties);
+
+			if (result)
+				Log.i(TAG, "利率配置文集设置成功！！！！");
+
 		}
 	}
 
@@ -271,7 +286,7 @@ public class MainActivity extends Activity {
 			Intent intent = new Intent(this, TiQianHuanKuan.class);
 			startActivity(intent);
 		}
-		
+
 		if (id == R.id.setting) {
 
 			Intent intent = new Intent(this, Setting.class);

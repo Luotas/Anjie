@@ -2,6 +2,8 @@ package com.aleaho.anjie;
 
 public class Data {
 
+	public static final String CONFIGFILE = "appConfig.properties";
+
 	/**
 	 * 贷款类别
 	 * 
@@ -37,15 +39,15 @@ public class Data {
 		 */
 		等额本金
 	}
-	
+
 	/**
-	 * 计划还款访方式
-	 * 一次提前还款，部分提前还款
+	 * 计划还款访方式 一次提前还款，部分提前还款
+	 * 
 	 * @author lenovo
-	 *
+	 * 
 	 */
-	public enum JHHKFS{
-		
+	public enum JHHKFS {
+
 		/**
 		 * 一次提前还清
 		 */
@@ -54,26 +56,26 @@ public class Data {
 		 * 部分提前还款
 		 */
 		BFHK
-		
+
 	}
-	
+
 	/**
 	 * 部分还款方式：还款期限不变，缩小还款额;还款额不变，缩短还款期限。
+	 * 
 	 * @author lenovo
-	 *
+	 * 
 	 */
-	public enum BFHKFS{
+	public enum BFHKFS {
 		/**
 		 * 还款期限不变，缩小还款额;
 		 */
 		QXBB,
-		
+
 		/**
 		 * 还款额不变，缩短还款期限
 		 */
 		HKEBB
-		
+
 	}
-	
 
 }

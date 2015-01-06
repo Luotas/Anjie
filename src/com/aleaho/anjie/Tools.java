@@ -1,5 +1,6 @@
 package com.aleaho.anjie;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -18,10 +19,12 @@ import android.app.Application;
 import android.content.Context;
 import android.os.DropBoxManager.Entry;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 public class Tools {
+	static final String TAG = "ANJIE";
 
 	/**
 	 * 初始化Spinner
@@ -148,6 +151,20 @@ public class Tools {
 		return result;
 	}
 
+	public static Properties getProperties(Context context, String file) {
+		Properties properties = new Properties();
+		try {
+			FileInputStream s = context.openFileInput(file);
+			// FileInputStream s = new FileInputStream(file);
+			properties.load(s);
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			properties = null;
+		}
+		return properties;
+	}
+
 	/**
 	 * 获得系统的配置文件
 	 * 
@@ -182,17 +199,18 @@ public class Tools {
 	 *            应用程序配置集合
 	 * @return 应用程序配置文件写成功 成功：true，不成功：false
 	 */
-	public static boolean setProperties(Context c,
+	public static boolean setProperties(Context c, String file,
 			HashMap<String, String> properties) {
 
 		boolean isWrited = false;
 		int flag = 0;
 		Properties props = new Properties();
 		try {
-			// InputStream in = c.getAssets().open("appConfig.properties");
-			FileOutputStream out = new FileOutputStream(
-					"/assests/appConfig.properties");
 
+			FileOutputStream out = c.openFileOutput(file,
+					Context.MODE_WORLD_READABLE);
+
+			//new FileOutputStream(file, false);
 			Iterator<java.util.Map.Entry<String, String>> iterator = properties
 					.entrySet().iterator();
 			while (iterator.hasNext()) {
@@ -203,8 +221,7 @@ public class Tools {
 			props.store(out, null);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
-			
-			e1.printStackTrace();
+			Log.e(TAG, e1.toString());
 			flag = 1;
 		}
 		if (0 == flag)

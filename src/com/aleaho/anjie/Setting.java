@@ -47,7 +47,7 @@ public class Setting extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setting);
-		Log.i(TAG,"转到系统设置界面！");
+		Log.i(TAG, "转到系统设置界面！");
 		getLiLv();
 		initView();
 
@@ -55,20 +55,20 @@ public class Setting extends Activity {
 
 	private void getLiLv() {
 		// TODO Auto-generated method stub
-		
-		Log.i(TAG,"获得系统利率");
-		Properties props = Tools.getProperties(this.getApplicationContext());
+
+		Log.i(TAG, "获得系统利率");
+		Properties props = Tools.getProperties(this.getApplicationContext(),
+				Data.CONFIGFILE);
 
 		if (props != null) {
-
 			SYSTEMSYDKSYLILV = props.get("sy").toString();
 			SYSTEMGJJLILV = props.get("gjj").toString();
-			Log.i(TAG,"从配置文件中获取系统利率");
+			Log.i(TAG, "从配置文件中获取系统利率");
 
 		} else {
 			SYSTEMSYDKSYLILV = this.getResources().getString(R.string.sydklilv);
 			SYSTEMGJJLILV = this.getResources().getString(R.string.gjjlilv);
-			Log.i(TAG,"从系统设置中获取系统利率");
+			Log.i(TAG, "从系统设置中获取系统利率");
 		}
 	}
 
@@ -90,17 +90,48 @@ public class Setting extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 
-				msg = m_Handler.obtainMessage();
+				int flag = 0;
+				String sydkll = etSYDKLL.getText().toString();
+				String gjjdkll = etGJJDKLL.getText().toString();
 
-				HashMap<String, String> properties = new HashMap<String, String>();
+				// 判断利率输入是否合法
+				if (sydkll == null || sydkll.trim().equals(".")) {
+					etSYDKLL.setError("输入利率！");
+					flag = 1;
+				}
+				if (gjjdkll == null || gjjdkll.trim().equals(".")) {
+					etGJJDKLL.setError("输入利率！");
+					flag = 1;
+				}
 
-				properties.put("sy", etSYDKLL.getText().toString());
-				properties.put("gjj", etGJJDKLL.getText().toString());
+				// 利率输入合法，进行保存
+				if (0 == flag) {
 
-				boolean result = Tools.setProperties(
-						Setting.this.getApplicationContext(), properties);
+					msg = m_Handler.obtainMessage();
 
-				Log.i(TAG, "利率设置成功了。。");
+					HashMap<String, String> properties = new HashMap<String, String>();
+
+					properties.put("sy", etSYDKLL.getText().toString());
+					properties.put("gjj", etGJJDKLL.getText().toString());
+
+					boolean result = Tools.setProperties(
+							Setting.this.getApplicationContext(),
+							Data.CONFIGFILE, properties);
+
+					if (result) {
+						Log.i(TAG, "利率设置成功了。。");
+
+						msg.what = 1;
+						m_Handler.sendMessage(msg);
+
+					} else {
+
+						Log.i(TAG, "利率设置失败。。");
+						msg.what = 0;
+						m_Handler.sendMessage(msg);
+					}
+
+				}
 			}
 		});
 
@@ -141,14 +172,14 @@ public class Setting extends Activity {
 		@SuppressLint("HandlerLeak")
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-			case 1:// 当提前还款时间长于或短于贷款期限，系统提示。
-				Toast.makeText(Setting.this, "请调整提前还款日期！", Toast.LENGTH_SHORT)
+			case 0:// 当提前还款时间长于或短于贷款期限，系统提示。
+				Toast.makeText(Setting.this, "利率设置失败！", Toast.LENGTH_SHORT)
 						.show();
 				break;
 
-			case 2:
-				Toast.makeText(Setting.this, "请检查贷款总额以及提前还款金额！",
-						Toast.LENGTH_SHORT).show();
+			case 1:
+				Toast.makeText(Setting.this, "利率设置成功了！", Toast.LENGTH_SHORT)
+						.show();
 				break;
 			}
 		}
