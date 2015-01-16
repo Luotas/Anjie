@@ -149,10 +149,63 @@ public class TiQianHuanKuan extends Activity {
 			@Override
 			public void onClick(View v) {
 
+				boolean result = verifyForm();
+
+				Log.i(TAG, "开始计算了！");
+
+				Log.i(TAG, "部分还款方式：" + jihuahuankuanfangshi);
+				// 部分还款比较还款金额与贷款总额关系
+				if (jihuahuankuanfangshi == JHHKFS.BFHK) {
+					daiKuanZongE = Tools.StringToFloat(etDaiKuanZongE.getText()
+							.toString());
+					huanKuanZongE = Tools.StringToInteger(etJiHuaHuanKuanJinE
+							.getText().toString());
+				}
+
+			}
+
+			// 验证界面数据输入是否合法
+			private boolean verifyForm() {
+				// TODO Auto-generated method stub
 				msg = m_Handler.obtainMessage();
 
-				int flag = 0;
-				Log.i(TAG, "开始计算了！");
+				boolean result = true;
+
+				String daiKuanZongE = etDaiKuanZongE.getText().toString();
+				String huanKuanZongE = etJiHuaHuanKuanJinE.getText().toString();
+				String liLv = etDaiKuanLiLv.getText().toString();
+
+				if (daiKuanZongE == null || daiKuanZongE.trim().equals("")
+						|| daiKuanZongE.trim().equals("0")
+						|| daiKuanZongE.trim().equals(".")) {
+					etDaiKuanZongE.setError("请输入贷款总额！");
+					result = false;
+				}
+
+				if (jihuahuankuanfangshi == JHHKFS.BFHK) {
+					if (huanKuanZongE == null
+							|| huanKuanZongE.trim().equals("")
+							|| huanKuanZongE.trim().equals("0")) {
+						etJiHuaHuanKuanJinE.setError("请输入计划还款金额！");
+						result = false;
+					}
+
+					if (result) {
+						if (Tools.StringToFloat(daiKuanZongE) < Tools
+								.StringToFloat(huanKuanZongE)) {
+							msg.what = 0x00011;
+							result = false;
+						}
+					}
+
+				}
+
+				if (liLv == null || liLv.trim().equals("")
+						|| liLv.trim().equals(".")) {
+					etDaiKuanLiLv.setError("请输入贷款利率！");
+					result = false;
+				}
+
 				shouCiHuanKuan = Tools.strToDate("yyyy-MM",
 						etChuCiHuanKuanShiJian.getText().toString());
 				jiHuaHuanKuan = Tools.strToDate("yyyy-MM",
@@ -170,37 +223,14 @@ public class TiQianHuanKuan extends Activity {
 						- shouCiHuanKuan.getMonth() - 1;
 
 				Log.i(TAG, "计算提前还款结束！" + tiQianQiShu);
-				if (tiQianQiShu > daiKuanQiXian) {
-					flag = 1;
+				if (tiQianQiShu > daiKuanQiXian || tiQianQiShu <= 0) {
+					msg.what = 0x00001;
+					result = false;
 				}
 
-				Log.i(TAG, "部分还款方式：" + jihuahuankuanfangshi);
-				// 部分还款比较还款金额与贷款总额关系
-				if (jihuahuankuanfangshi == JHHKFS.BFHK) {
-					daiKuanZongE = Tools.StringToFloat(etDaiKuanZongE.getText()
-							.toString());
-					huanKuanZongE = Tools.StringToInteger(etJiHuaHuanKuanJinE
-							.getText().toString());
-
-					if (-1 == huanKuanZongE) {
-						flag = flag + 2;
-					} else if (huanKuanZongE > daiKuanZongE) {
-						flag = flag + 3;
-					}
-				}
-
-				Log.i(TAG, "flag值为:" + flag);
-				if (flag == 0) {
-
-				} else {
-
-					msg.what = flag;
-					Log.i(TAG, "消息已经传递出去！");
+				if (!result)
 					m_Handler.sendMessage(msg);
-				}
-
-				// earlyPayMent.setBfhkfs()
-
+				return result;
 			}
 		});
 	}
@@ -319,7 +349,7 @@ public class TiQianHuanKuan extends Activity {
 			Intent intent = new Intent(this, Setting.class);
 			startActivity(intent);
 		}
-		
+
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -416,17 +446,12 @@ public class TiQianHuanKuan extends Activity {
 		@SuppressLint("HandlerLeak")
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-			case 1:// 当提前还款时间长于或短于贷款期限，系统提示。
+			case 0x00001:// 当提前还款时间长于或短于贷款期限，系统提示。
 				Toast.makeText(TiQianHuanKuan.this, "请调整提前还款日期！",
 						Toast.LENGTH_SHORT).show();
 				break;
-
-			case 2:
-				Toast.makeText(TiQianHuanKuan.this, "请检查贷款总额以及提前还款金额！",
-						Toast.LENGTH_SHORT).show();
-				break;
-			case 3:
-				Toast.makeText(TiQianHuanKuan.this, "请调整提前还款日期,以及还款金额！",
+			case 0x00011:// 当提前还款时间长于或短于贷款期限，系统提示。
+				Toast.makeText(TiQianHuanKuan.this, "提前还款金额大于贷款金额！",
 						Toast.LENGTH_SHORT).show();
 				break;
 			}

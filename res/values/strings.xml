@@ -25,8 +25,8 @@
     <string name="shuruedu">请输入额度</string>
     <string name="shurulilv">请输利率</string>
     <string name="daikuanlilv">贷款利率</string>
-    <string name="sydklilv">6.55</string>
-    <string name="gjjlilv">4.50</string>
+    <string name="sydklilv">6.15</string>
+    <string name="gjjlilv">4.25</string>
     <string name="chucihuankuan">2014-11</string>
     <string name="jihuahuankuan">2016-11</string>
     <string name="baifenhao">%</string>

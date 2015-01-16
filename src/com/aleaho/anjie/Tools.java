@@ -3,21 +3,16 @@ package com.aleaho.anjie;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Properties;
 
-import android.R.bool;
 import android.annotation.SuppressLint;
-import android.app.Application;
 import android.content.Context;
-import android.os.DropBoxManager.Entry;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -155,7 +150,6 @@ public class Tools {
 		Properties properties = new Properties();
 		try {
 			FileInputStream s = context.openFileInput(file);
-			// FileInputStream s = new FileInputStream(file);
 			properties.load(s);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -95,11 +95,13 @@ public class Setting extends Activity {
 				String gjjdkll = etGJJDKLL.getText().toString();
 
 				// 判断利率输入是否合法
-				if (sydkll == null || sydkll.trim().equals(".")) {
+				if (sydkll == null || sydkll.trim().equals(".")
+						|| sydkll.trim().equals("")) {
 					etSYDKLL.setError("输入利率！");
 					flag = 1;
 				}
-				if (gjjdkll == null || gjjdkll.trim().equals(".")) {
+				if (gjjdkll == null || gjjdkll.trim().equals(".")
+						|| gjjdkll.trim().equals("")) {
 					etGJJDKLL.setError("输入利率！");
 					flag = 1;
 				}
@@ -154,11 +156,11 @@ public class Setting extends Activity {
 			Intent intent = new Intent(this, MainActivity.class);
 			startActivity(intent);
 		}
-		if (id == R.id.tiqianhuangkuan) {
-
-			Intent intent = new Intent(this, TiQianHuanKuan.class);
-			startActivity(intent);
-		}
+//		if (id == R.id.tiqianhuangkuan) {
+//
+//			Intent intent = new Intent(this, TiQianHuanKuan.class);
+//			startActivity(intent);
+//		}
 
 		if (id == R.id.setting) {
 
