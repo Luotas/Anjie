@@ -156,11 +156,11 @@ public class Setting extends Activity {
 			Intent intent = new Intent(this, MainActivity.class);
 			startActivity(intent);
 		}
-//		if (id == R.id.tiqianhuangkuan) {
-//
-//			Intent intent = new Intent(this, TiQianHuanKuan.class);
-//			startActivity(intent);
-//		}
+		if (id == R.id.tiqianhuangkuan) {
+
+			Intent intent = new Intent(this, TiQianHuanKuan.class);
+			startActivity(intent);
+		}
 
 		if (id == R.id.setting) {
 

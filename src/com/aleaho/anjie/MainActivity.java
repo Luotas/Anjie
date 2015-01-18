@@ -281,11 +281,11 @@ public class MainActivity extends Activity {
 		if (id == R.id.daikuanjisuan) {
 			return true;
 		}
-//		if (id == R.id.tiqianhuangkuan) {
-//
-//			Intent intent = new Intent(this, TiQianHuanKuan.class);
-//			startActivity(intent);
-//		}
+		if (id == R.id.tiqianhuangkuan) {
+
+			Intent intent = new Intent(this, TiQianHuanKuan.class);
+			startActivity(intent);
+		}
 
 		if (id == R.id.setting) {
 
